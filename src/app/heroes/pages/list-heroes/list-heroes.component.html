@@ -4,4 +4,9 @@
   </div>
 </div>
 
+<ul>
+  <li *ngFor="let heroe of heroes | async">
+    {{heroe.name}}
+  </li>
+</ul>
 <p>list-heroes works!</p>
