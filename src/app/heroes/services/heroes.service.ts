@@ -16,9 +16,9 @@ export class HeroesService {
 
   constructor( private http: HttpClient) { }
 
-  getHeroes(offset: number, limit: number): Observable<CharactersResponse> {
+  getHeroes(offset: number, limit: number): Observable<CharactersResponse[]> {
 
-    return this.http.get<CharactersResponse>(`${this.URL_API}characters?apikey=${this.publicKey}&hash=${this.MD5_HASH}&ts=1&offset=${offset}&limit=${limit}`)
+    return this.http.get<CharactersResponse[]>(`${this.URL_API}characters?apikey=${this.publicKey}&hash=${this.MD5_HASH}&ts=1&offset=${offset}&limit=${limit}`)
     .pipe(map((data:any) => data.data.results))
   }
 }

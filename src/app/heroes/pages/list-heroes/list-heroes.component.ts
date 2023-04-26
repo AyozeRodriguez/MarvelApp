@@ -18,7 +18,9 @@ export class ListHeroesComponent implements OnInit {
   }
 
   getAllHeroes(){
-    this.heroes = this.heroesService.getHeroes(0,5);
+    this.heroes = this.heroesService.getHeroes(0,30)
+    console.log(this.heroes);
+
   }
 
 }
