@@ -20,4 +20,33 @@
   -webkit-box-orient: vertical;
 }
 
+.exit-btn {
+  position: absolute;
+  right: -27px;
+  top:-24px;
+  border-radius: 50%;
+  border: none;
+  height: 60px;
+  width: 60px;
+}
+
+.movil-btn {
+  display: none;
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 600px) {
+  .exit-btn {
+    display: none;
+  }
+  .movil-btn {
+    display: block;
+  }
+}
 
