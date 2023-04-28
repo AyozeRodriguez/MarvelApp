@@ -1,27 +1,23 @@
-# MarvelApp
+# Aplicación de búsqueda de superhéroes
+Esta es una aplicación de búsqueda de superhéroes creada con Angular y que utiliza la API de SuperheroAPI para obtener información sobre los superhéroes.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0.
+## Cómo iniciar el proyecto
+Para iniciar el proyecto, sigue los siguientes pasos:
 
-## Development server
+- Abre una terminal y accede al directorio del proyecto.
+- Ejecuta el comando ``npm install`` para instalar las dependencias necesarias.
+- Ejecuta el comando ``npm start`` para iniciar la aplicación.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Funcionamiento de la aplicación
+La aplicación consta de un grid principal que muestra cards de los superhéroes. A medida que se hace scroll, se irán mostrando más tarjetas. 
+La aplicación también cuenta con un buscador en la parte superior que permite buscar un superhéroe en base a la cadena introducida en el input.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Al hacer clic en cada tarjeta, se abre un modal con información adicional sobre el superhéroe. Desde este modal, es posible redirigir a una página con más información sobre las apariciones del superhéroe.
 
-## Build
+## Información adicional
+### Responsivo
+La aplicación es totalmente responsiva y se adapta a todos los tamaños de pantalla. Puedes usarla en cualquier dispositivo sin problemas.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+![Desktop view](src/assets/captures/desktop.JPG)
+![Movil view](src/assets/captures/movil.JPG)
