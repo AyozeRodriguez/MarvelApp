@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
 import { ListHeroesComponent } from "./pages/list-heroes/list-heroes.component";
+import { PageNotFoundComponent } from "./pages/page-not-found/page-not-found.component";
 
 
 const routes: Routes = [
@@ -14,8 +15,12 @@ const routes: Routes = [
     component: ListHeroesComponent
   },
   {
+    path: 'page-not-found',
+    component: PageNotFoundComponent
+  },
+  {
     path: '**',
-    redirectTo: 'list-heroes'
+    redirectTo: 'page-not-found'
   }
 ]
 

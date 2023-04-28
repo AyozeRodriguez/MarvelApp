@@ -13,10 +13,10 @@ export interface Data {
   limit:   number;
   total:   number;
   count:   number;
-  results: Result[];
+  results: Hero[];
 }
 
-export interface Result {
+export interface Hero {
   id:          number;
   name:        string;
   description: string;

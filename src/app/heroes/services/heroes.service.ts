@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { CharactersResponse } from '../interfaces/characters.interface';
-import { CharacterResponse } from '../interfaces/character.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +16,9 @@ export class HeroesService {
 
   constructor( private http: HttpClient) { }
 
-  getHeroes(offset: number, limit: number): Observable<CharactersResponse[]> {
+  getHeroes(offset: number, limit: number): Observable<CharactersResponse> {
     const URL = `${this.URL_API}characters?apikey=${this.publicKey}&hash=${this.MD5_HASH}&ts=1&offset=${offset}&limit=${limit}`;
-    return this.http.get<CharactersResponse[]>(URL)
-    .pipe(map((data:any) => data.data.results))
+    return this.http.get<CharactersResponse>(URL)
   }
 
   getHeroe(id :number){
@@ -29,9 +27,8 @@ export class HeroesService {
     .pipe(map((data:any) => data.data.results))
   }
 
-  getHeroeByName(name: string): Observable<CharactersResponse[]>{
+  getHeroeByName(name: string): Observable<CharactersResponse>{
     const URL = `${this.URL_API}characters?apikey=${this.publicKey}&hash=${this.MD5_HASH}&ts=1&nameStartsWith=${name}`;
-    return this.http.get<CharactersResponse[]>(URL)
-    .pipe(map((data:any) => data.data.results))
+    return this.http.get<CharactersResponse>(URL)
   }
 }
