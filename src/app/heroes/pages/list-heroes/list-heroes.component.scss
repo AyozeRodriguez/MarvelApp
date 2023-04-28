@@ -1,7 +1,11 @@
 
-.card-img-top{
+.card-img-top-exist{
   height: 286px;
   object-fit: cover;
+}
+.card-img-top-not-exist{
+  height: 286px;
+  object-fit: fill;
 }
 
 .card{

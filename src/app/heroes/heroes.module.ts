@@ -4,6 +4,7 @@ import { ListHeroesComponent } from './pages/list-heroes/list-heroes.component';
 import { HeroesRoutingModule } from './heroes-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 
@@ -15,7 +16,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
   imports: [
     CommonModule,
     HeroesRoutingModule,
-    SharedModule
+    SharedModule,
+    InfiniteScrollModule
   ]
 })
 export class HeroesModule { }
