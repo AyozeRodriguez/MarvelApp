@@ -50,6 +50,11 @@
   z-index: 999;
 }
 
+.btn-moreInfo {
+  cursor: pointer;
+}
+
+
 @media (max-width: 600px) {
   .exit-btn {
     display: none;
