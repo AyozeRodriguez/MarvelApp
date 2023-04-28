@@ -11,14 +11,14 @@ export class ListHeroesComponent implements OnInit {
 
   constructor(private heroesService: HeroesService) { }
 
-  heroes?: Hero[];
-  singleHeroe?: Hero;
-  spinnerOk: Boolean = false;
+  heroes: Hero[] | undefined ;
+  singleHeroe: Hero | undefined;
+  spinnerLoading: Boolean = true;
   offset: number = 0;
   limit: number = 28;
 
-  distance = 2;
-  throttle = 0;
+  distanceScroll = 2;
+  throttleScroll = 0;
 
   imageNotExistURL: string = 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg';
 
@@ -28,6 +28,10 @@ export class ListHeroesComponent implements OnInit {
   }
 
 
+  /**
+   * Devuelve un array de Heroes, se le pasa al servicio un limite y un offset que varia según el scroll
+   * @returns {Hero[]}
+   */
   getAllHeroes() {
     this.heroesService.getHeroes(this.offset, this.limit)
       .subscribe({
@@ -35,44 +39,68 @@ export class ListHeroesComponent implements OnInit {
           if (this.heroes?.length) {
             this.heroes.push(...res.data.results)
           } else {
+            this.heroes = []
             this.heroes = res.data.results
           }
         },
         error: err => console.error(err),
         complete: () => {
-          this.spinnerOk = true
+          this.spinnerLoading = false
           this.offset += this.limit;
         }
       })
   }
 
+  /**
+   * Se le envia una id de un Heroe y se recibe un heroe con todos sus datos
+   * @param {id:number}
+   * @returns {Hero}
+   */
   viewMoreHero(id: number) {
     this.heroesService.getHeroe(id)
       .subscribe({
-        next: res => this.singleHeroe = res[0],
+        next: res => {
+          this.singleHeroe = res[0]
+        },
         error: err => console.error(err),
-        complete: () => this.spinnerOk = true
+        complete: () => this.spinnerLoading = false
       })
   }
 
+  /**
+   * Devuelve un Array de Heroes si existe algún nombre que contenga el string que se le envia
+   * @param {name:string}
+   * @returns {Hero[]}
+   */
   searchByHero(name: string) {
-    console.log(name);
-    if (name !=='') {
+    if (name) {
       this.heroesService.getHeroeByName(name)
         .subscribe({
           next: res => this.heroes = res.data.results,
-          error: err => console.error(err)
+          error: err => console.error(err),
+          complete: () => this.scrollTop()
         });
     }
     else {
+      this.offset = 0;
+      this.heroes = [];
       this.getAllHeroes()
     }
   }
 
+  /**
+   * Hace una petición para traer mas heroes al hacer scroll
+   * @returns {any}
+   */
   onScroll() {
     this.getAllHeroes();
   }
 
+  /**
+   * Se usa para comprobar si un heroe tiene imagen, se controla que no corte el texto de las imagenes
+   * @param {hero:Hero}
+   * @returns {any}
+   */
   imageExist(hero: Hero) {
     let url = `${ hero.thumbnail.path }.${ hero.thumbnail.extension }`;
     if (url === this.imageNotExistURL) return true
@@ -80,7 +108,11 @@ export class ListHeroesComponent implements OnInit {
   }
 
 
-scrollTop() {
+  /**
+   * Función que envia al top de la pagina
+   * @returns {any}
+   */
+  scrollTop() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   }

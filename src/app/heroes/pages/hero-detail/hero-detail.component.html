@@ -1,0 +1,31 @@
+<div class="row mb-4">
+
+  <shared-spinner *ngIf="spinnerLoading"></shared-spinner>
+
+
+  <div class="col" *ngIf="!spinnerLoading">
+    <button (click)="scrollTop()" class="btn-top"> <img src="assets/ArrowUp.svg"> </button>
+    <span class="d-flex flex-column align-items-center justify-content-center">
+      <img class="card-img-top custom-height mt-4"
+        src="{{singleHeroe?.thumbnail?.path}}.{{singleHeroe?.thumbnail?.extension}}">
+      <h2 class="card-title my-2">{{singleHeroe?.name}}</h2>
+    </span>
+
+    <div class="my-3 mx-5 text-center mb-5">
+      <p *ngIf="singleHeroe?.description"> {{singleHeroe?.description}} </p>
+      <p *ngIf="!singleHeroe?.description">No information available</p>
+      <div class="mt-5" *ngIf="singleHeroe?.comics?.items?.length">
+        <h2>Comics</h2>
+        <p *ngFor="let comic of singleHeroe?.comics?.items"> {{comic.name | titlecase}}</p>
+      </div>
+      <div class="my-5" *ngIf="singleHeroe?.series?.items?.length">
+        <h2>Series</h2>
+        <p *ngFor="let series of singleHeroe?.series?.items"> {{series.name | titlecase}}</p>
+      </div>
+      <div *ngIf="singleHeroe?.stories?.items?.length">
+        <h2>Stories</h2>
+        <p *ngFor="let stories of singleHeroe?.stories?.items"> {{stories.name | titlecase}}</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { ListHeroesComponent } from "./pages/list-heroes/list-heroes.component";
 import { PageNotFoundComponent } from "./pages/page-not-found/page-not-found.component";
+import { HeroDetailComponent } from "./pages/hero-detail/hero-detail.component";
 
 
 const routes: Routes = [
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: 'list-heroes',
     component: ListHeroesComponent
+  },
+  {
+    path: 'heroe-detail/:id',
+    component: HeroDetailComponent
   },
   {
     path: 'page-not-found',
