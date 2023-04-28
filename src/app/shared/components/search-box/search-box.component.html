@@ -1,12 +1,12 @@
 
+  <input
+  type="text"
+  [placeholder]="placeholder"
+  class="form-control"
+  (keyup)="emitValue(heroeInput.value)"
+  #heroeInput
+  >
 
-<input
-type="text"
-[placeholder]="placeholder"
-class="form-control"
-(keyup.enter)="emitValue(heroeInput.value)"
-#heroeInput
->
 
 <h3 class="mt-2 text-white" *ngIf="heroeInput.value">
   These are the results for:

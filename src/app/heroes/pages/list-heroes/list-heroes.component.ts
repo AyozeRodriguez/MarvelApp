@@ -56,13 +56,13 @@ export class ListHeroesComponent implements OnInit {
   }
 
   searchByHero(name: string) {
-    if (name) {
+    console.log(name);
+    if (name !=='') {
       this.heroesService.getHeroeByName(name)
         .subscribe({
           next: res => this.heroes = res.data.results,
           error: err => console.error(err)
-        }
-        );
+        });
     }
     else {
       this.getAllHeroes()
@@ -77,6 +77,12 @@ export class ListHeroesComponent implements OnInit {
     let url = `${ hero.thumbnail.path }.${ hero.thumbnail.extension }`;
     if (url === this.imageNotExistURL) return true
     else return false
+  }
+
+
+scrollTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   }
 
 }
